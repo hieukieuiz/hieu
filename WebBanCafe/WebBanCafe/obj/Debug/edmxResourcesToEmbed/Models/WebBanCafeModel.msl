@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Web_ban_CafeModelStoreContainer" CdmEntityContainer="QuanlyCafeEntities">
+    <EntitySetMapping Name="ADMINs">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.ADMIN">
+        <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASS_WORD" ColumnName="PASS_WORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+          <ScalarProperty Name="DECENTRALIZATION" ColumnName="DECENTRALIZATION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILLs">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.BILL">
+        <MappingFragment StoreEntitySet="BILL">
+          <ScalarProperty Name="BILL_ID" ColumnName="BILL_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="CUST_NAME" ColumnName="CUST_NAME" />
+          <ScalarProperty Name="CUST_ADDRESS" ColumnName="CUST_ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ORDER_DATE" ColumnName="ORDER_DATE" />
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+          <ScalarProperty Name="DELIVERY" ColumnName="DELIVERY" />
+          <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+          <ScalarProperty Name="COUPON_ID" ColumnName="COUPON_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BLOGs">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.BLOG">
+        <MappingFragment StoreEntitySet="BLOG">
+          <ScalarProperty Name="BLOG_ID" ColumnName="BLOG_ID" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="IMG_ID" ColumnName="IMG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARTs">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.CART">
+        <MappingFragment StoreEntitySet="CART">
+          <ScalarProperty Name="CART_ID" ColumnName="CART_ID" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="BILL_ID" ColumnName="BILL_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORies">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+          <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COUPONs">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.COUPON">
+        <MappingFragment StoreEntitySet="COUPON">
+          <ScalarProperty Name="COUPON_ID" ColumnName="COUPON_ID" />
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMGs">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.IMG">
+        <MappingFragment StoreEntitySet="IMG">
+          <ScalarProperty Name="IMG_ID" ColumnName="IMG_ID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MESSAGEs">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.MESSAGE">
+        <MappingFragment StoreEntitySet="MESSAGE">
+          <ScalarProperty Name="MESS_ID" ColumnName="MESS_ID" />
+          <ScalarProperty Name="NAME_SENDER" ColumnName="NAME_SENDER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+          <ScalarProperty Name="MESSAGE_CONT" ColumnName="MESSAGE_CONT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYMENT_METHODD">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.PAYMENT_METHODD">
+        <MappingFragment StoreEntitySet="PAYMENT_METHODD">
+          <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+          <ScalarProperty Name="PAYMENT_NAME" ColumnName="PAYMENT_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTs">
+      <EntityTypeMapping TypeName="Web_ban_CafeModel.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCT">
+          <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+          <ScalarProperty Name="IMG_ID" ColumnName="IMG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

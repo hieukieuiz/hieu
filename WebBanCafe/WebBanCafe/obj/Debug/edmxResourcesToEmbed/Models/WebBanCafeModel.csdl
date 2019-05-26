@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Web_ban_CafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="ADMIN_ID" />
+    </Key>
+    <Property Name="ADMIN_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PASS_WORD" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PHONE" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="FULLNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DECENTRALIZATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="BILL_ID" />
+    </Key>
+    <Property Name="BILL_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="STATUS" Type="Int32" />
+    <Property Name="CUST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CUST_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PHONE" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ORDER_DATE" Type="DateTime" Precision="0" />
+    <Property Name="TOTAL" Type="Double" />
+    <Property Name="DELIVERY" Type="Double" />
+    <Property Name="PAYMENT_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="COUPON_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="COUPON" Relationship="Self.FK__BILL__COUPON_ID__5070F446" FromRole="BILL" ToRole="COUPON" />
+    <NavigationProperty Name="PAYMENT_METHODD" Relationship="Self.FK__BILL__PAYMENT_ID__4F7CD00D" FromRole="BILL" ToRole="PAYMENT_METHODD" />
+    <NavigationProperty Name="CARTs" Relationship="Self.FK__CART__BILL_ID__5441852A" FromRole="BILL" ToRole="CART" />
+  </EntityType>
+  <EntityType Name="BLOG">
+    <Key>
+      <PropertyRef Name="BLOG_ID" />
+    </Key>
+    <Property Name="BLOG_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IMG_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="IMG" Relationship="Self.FK__BLOG__IMG_ID__4AB81AF0" FromRole="BLOG" ToRole="IMG" />
+  </EntityType>
+  <EntityType Name="CART">
+    <Key>
+      <PropertyRef Name="CART_ID" />
+    </Key>
+    <Property Name="CART_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <Property Name="PRODUCT_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="BILL_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="BILL" Relationship="Self.FK__CART__BILL_ID__5441852A" FromRole="CART" ToRole="BILL" />
+    <NavigationProperty Name="PRODUCT" Relationship="Self.FK__CART__PRODUCT_ID__534D60F1" FromRole="CART" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="CATEGORY_ID" />
+    </Key>
+    <Property Name="CATEGORY_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CATEGORY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__CATEGOR__3A81B327" FromRole="CATEGORY" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="COUPON">
+    <Key>
+      <PropertyRef Name="COUPON_ID" />
+    </Key>
+    <Property Name="COUPON_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="VALUE" Type="Int32" />
+    <Property Name="EXPIRYDATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="BILLs" Relationship="Self.FK__BILL__COUPON_ID__5070F446" FromRole="COUPON" ToRole="BILL" />
+  </EntityType>
+  <EntityType Name="IMG">
+    <Key>
+      <PropertyRef Name="IMG_ID" />
+    </Key>
+    <Property Name="IMG_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BLOGs" Relationship="Self.FK__BLOG__IMG_ID__4AB81AF0" FromRole="IMG" ToRole="BLOG" />
+    <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__IMG_ID__3B75D760" FromRole="IMG" ToRole="PRODUCT" />
+  </EntityType>
+  <EntityType Name="MESSAGE">
+    <Key>
+      <PropertyRef Name="MESS_ID" />
+    </Key>
+    <Property Name="MESS_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NAME_SENDER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SUBJECT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MESSAGE_CONT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PAYMENT_METHODD">
+    <Key>
+      <PropertyRef Name="PAYMENT_ID" />
+    </Key>
+    <Property Name="PAYMENT_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PAYMENT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BILLs" Relationship="Self.FK__BILL__PAYMENT_ID__4F7CD00D" FromRole="PAYMENT_METHODD" ToRole="BILL" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="PRODUCT_ID" />
+    </Key>
+    <Property Name="PRODUCT_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PRICE" Type="Double" />
+    <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CATEGORY_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="IMG_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="CARTs" Relationship="Self.FK__CART__PRODUCT_ID__534D60F1" FromRole="PRODUCT" ToRole="CART" />
+    <NavigationProperty Name="CATEGORY" Relationship="Self.FK__PRODUCT__CATEGOR__3A81B327" FromRole="PRODUCT" ToRole="CATEGORY" />
+    <NavigationProperty Name="IMG" Relationship="Self.FK__PRODUCT__IMG_ID__3B75D760" FromRole="PRODUCT" ToRole="IMG" />
+  </EntityType>
+  <Association Name="FK__BILL__COUPON_ID__5070F446">
+    <End Role="COUPON" Type="Self.COUPON" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUPON">
+        <PropertyRef Name="COUPON_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="COUPON_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__PAYMENT_ID__4F7CD00D">
+    <End Role="PAYMENT_METHODD" Type="Self.PAYMENT_METHODD" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAYMENT_METHODD">
+        <PropertyRef Name="PAYMENT_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="PAYMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CART__BILL_ID__5441852A">
+    <End Role="BILL" Type="Self.BILL" Multiplicity="0..1" />
+    <End Role="CART" Type="Self.CART" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BILL">
+        <PropertyRef Name="BILL_ID" />
+      </Principal>
+      <Dependent Role="CART">
+        <PropertyRef Name="BILL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BLOG__IMG_ID__4AB81AF0">
+    <End Role="IMG" Type="Self.IMG" Multiplicity="0..1" />
+    <End Role="BLOG" Type="Self.BLOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMG">
+        <PropertyRef Name="IMG_ID" />
+      </Principal>
+      <Dependent Role="BLOG">
+        <PropertyRef Name="IMG_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CART__PRODUCT_ID__534D60F1">
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
+    <End Role="CART" Type="Self.CART" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Principal>
+      <Dependent Role="CART">
+        <PropertyRef Name="PRODUCT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PRODUCT__CATEGOR__3A81B327">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="PRODUCT">
+        <PropertyRef Name="CATEGORY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PRODUCT__IMG_ID__3B75D760">
+    <End Role="IMG" Type="Self.IMG" Multiplicity="0..1" />
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMG">
+        <PropertyRef Name="IMG_ID" />
+      </Principal>
+      <Dependent Role="PRODUCT">
+        <PropertyRef Name="IMG_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanlyCafeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADMINs" EntityType="Self.ADMIN" />
+    <EntitySet Name="BILLs" EntityType="Self.BILL" />
+    <EntitySet Name="BLOGs" EntityType="Self.BLOG" />
+    <EntitySet Name="CARTs" EntityType="Self.CART" />
+    <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+    <EntitySet Name="COUPONs" EntityType="Self.COUPON" />
+    <EntitySet Name="IMGs" EntityType="Self.IMG" />
+    <EntitySet Name="MESSAGEs" EntityType="Self.MESSAGE" />
+    <EntitySet Name="PAYMENT_METHODD" EntityType="Self.PAYMENT_METHODD" />
+    <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+    <AssociationSet Name="FK__BILL__COUPON_ID__5070F446" Association="Self.FK__BILL__COUPON_ID__5070F446">
+      <End Role="COUPON" EntitySet="COUPONs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__PAYMENT_ID__4F7CD00D" Association="Self.FK__BILL__PAYMENT_ID__4F7CD00D">
+      <End Role="PAYMENT_METHODD" EntitySet="PAYMENT_METHODD" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CART__BILL_ID__5441852A" Association="Self.FK__CART__BILL_ID__5441852A">
+      <End Role="BILL" EntitySet="BILLs" />
+      <End Role="CART" EntitySet="CARTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BLOG__IMG_ID__4AB81AF0" Association="Self.FK__BLOG__IMG_ID__4AB81AF0">
+      <End Role="IMG" EntitySet="IMGs" />
+      <End Role="BLOG" EntitySet="BLOGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CART__PRODUCT_ID__534D60F1" Association="Self.FK__CART__PRODUCT_ID__534D60F1">
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+      <End Role="CART" EntitySet="CARTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PRODUCT__CATEGOR__3A81B327" Association="Self.FK__PRODUCT__CATEGOR__3A81B327">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PRODUCT__IMG_ID__3B75D760" Association="Self.FK__PRODUCT__IMG_ID__3B75D760">
+      <End Role="IMG" EntitySet="IMGs" />
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
